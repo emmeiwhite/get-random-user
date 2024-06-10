@@ -1,20 +1,18 @@
-import get from './utils/getElement.js'
 import getUser from './utils/getUser.js'
-
-const image = get('.user-img')
-const title = get('.user-title')
-const value = get('.user-value')
-const btn = get('.btn')
-
-const btns = [...document.querySelectorAll('.icon')]
+import displayUser from './utils/displayUser.js'
 
 const showUser = async () => {
-  // get user from api
+  // 1) get user from api
   const person = await getUser()
 
-  // display user
+  // 2) display user
+  displayUser(person)
 }
 
 // load user api data on DOMContentLoaded and for the click of each Random button
 window.addEventListener('DOMContentLoaded', showUser)
+
+/** Show random user on click of each button as well */
+import get from './utils/getElement.js'
+const btn = get('.btn')
 btn.addEventListener('click', showUser)
